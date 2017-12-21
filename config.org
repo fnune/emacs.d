@@ -63,6 +63,10 @@ This is a work-in-progress and I'm trying to adopt Emacs after a relatively long
 (setq auto-save-list-file-prefix
     emacs-tmp-dir)
 #+END_SRC
+** Enable visual-line-mode for word wrap
+#+BEGIN_SRC emacs-lisp
+(global-visual-line-mode t)
+#+END_SRC
 * Evil mode
 ** Reset some defaults
 *** Restore default tab functionality in org-mode
@@ -102,7 +106,7 @@ This is a work-in-progress and I'm trying to adopt Emacs after a relatively long
 (use-package evil-indent-textobject
 :ensure t))
 #+END_SRC
-** Make escape quit most things.
+** Make escape quit most things
 In Delete Selection mode, if the mark is active, just deactivate it then it takes a second `keyboard-quit` to abort the minibuffer.
 #+BEGIN_SRC emacs-lisp
 (defun minibuffer-keyboard-quit ()
