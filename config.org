@@ -33,11 +33,20 @@ This is a work-in-progress and I'm trying to adopt Emacs after a relatively long
 (setq use-package-always-ensure t)
 #+END_SRC
 * Theme
+Set some variables to override some defaults later on
 #+BEGIN_SRC emacs-lisp
 (setq afternoon-background-color "#1c1c1c")
+(setq visual-selected-background-color "#2c2c2c")
+#+END_SRC
+Initialize [[https://github.com/osener/emacs-afternoon-theme][emacs-afternoon-theme]].
+#+BEGIN_SRC emacs-lisp
 (use-package afternoon-theme
   :ensure t)
 (load-theme 'afternoon t)
+#+END_SRC
+Override some theme defaults
+#+BEGIN_SRC emacs-lisp
+(set-face-attribute 'region nil :background visual-selected-background-color)
 #+END_SRC
 * Sane defaults
 ** Turn off menu bar
