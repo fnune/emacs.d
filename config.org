@@ -158,6 +158,19 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
 :config
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
+* Helm & Projectile
+#+BEGIN_SRC emacs-lisp
+(use-package helm
+  :ensure t
+  :config (helm-mode t))
+(use-package projectile
+  :ensure projectile
+  :config (projectile-global-mode t))
+(use-package helm-projectile
+  :ensure t)
+(use-package helm-ag
+  :ensure t)
+#+END_SRC
 * Other stuff
 Use Emacs state in these additional modes
 #+BEGIN_SRC emacs-lisp
