@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (navigator zenburn-theme use-package solarized-theme org-bullets noctilux-theme navigate monokai-theme moe-theme evil-surround evil-org evil-leader evil-indent-textobject dracula-theme doom-themes cyberpunk-theme color-theme-sanityinc-tomorrow ample-theme afternoon-theme))))
+    (org-bullets navigate evil-indent-textobject evil-org evil-surround evil-leader evil afternoon-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

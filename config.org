@@ -23,10 +23,6 @@ This is a work-in-progress and I'm trying to adopt Emacs after a relatively long
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 #+END_SRC
-* Theme
-#+BEGIN_SRC emacs-lisp
-(load-theme 'afternoon t)
-#+END_SRC
 * Set up use-package
 #+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'use-package)
@@ -35,6 +31,12 @@ This is a work-in-progress and I'm trying to adopt Emacs after a relatively long
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+#+END_SRC
+* Theme
+#+BEGIN_SRC emacs-lisp
+(use-package afternoon-theme
+  :ensure t)
+(load-theme 'afternoon t)
 #+END_SRC
 * Sane defaults
 ** Turn off menu bar
