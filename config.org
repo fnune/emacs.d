@@ -49,9 +49,11 @@ Override some theme defaults
 (set-face-attribute 'region nil :background visual-selected-background-color)
 #+END_SRC
 * Sane defaults
-** Turn off menu bar
+** Turn off UI elements
 #+BEGIN_SRC emacs-lisp
 (menu-bar-mode -1)
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
 #+END_SRC
 ** Say y or n instead of yes or no
 #+BEGIN_SRC emacs-lisp
@@ -94,6 +96,29 @@ Override some theme defaults
 (set-face-foreground 'linum-highlight-face "white")
 (set-face-background 'linum-highlight-face nil)
 (hlinum-activate)
+#+END_SRC
+** Standard indentation & no tabs
+#+BEGIN_SRC emacs-lisp
+(setq standard-indent 2)
+(setq-default indent-tabs-mode nil)
+#+END_SRC
+** Show line and column in the mode-line
+#+BEGIN_SRC emacs-lisp
+(line-number-mode 1)
+(column-number-mode 1)
+#+END_SRC
+** Ensure that the system PATH is the one used by Emacs
+#+BEGIN_SRC emacs-lisp
+(use-package exec-path-from-shell
+  :ensure t
+  :init
+    (setq exec-path-from-shell-check-startup-files nil)
+  :config
+    (exec-path-from-shell-initialize))
+#+END_SRC
+** Reduce startup screen noise
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message 't)
 #+END_SRC
 * Evil mode
 ** Reset some defaults
