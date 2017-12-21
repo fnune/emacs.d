@@ -1,6 +1,7 @@
 config.el
-config.pdf
-config.tex
-config.md
+*.html
+*.pdf
+*.tex
+*.md
 elpa
 network-security.data

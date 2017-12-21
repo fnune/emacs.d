@@ -1,4 +1,10 @@
+#+TITLE: Fausto's Emacs config
+
+#+AUTHOR: Fausto Núñez Alberro
+#+EMAIL: fausto.nunez@mailbox.org
+
 #+STARTUP: indent
+
 * Personal information
 #+BEGIN_SRC emacs-lisp
 (setq user-full-name "Fausto Núñez Alberro")
