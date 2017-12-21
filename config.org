@@ -1,0 +1,135 @@
+#+STARTUP: indent
+* Personal information
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Fausto Núñez Alberro")
+(setq user-mail-address "fausto.nunez@mailbox.org")
+#+END_SRC
+* Package management
+#+BEGIN_SRC emacs-lisp
+(load "package")
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+#+END_SRC
+* Theme
+#+BEGIN_SRC emacs-lisp
+(load-theme 'afternoon t)
+#+END_SRC
+* Set up use-package
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+#+END_SRC
+* Sane defaults
+** Turn off menu bar
+#+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+#+END_SRC
+** Say y or n instead of yes or no
+#+BEGIN_SRC emacs-lisp
+(defalias 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+** Emacs system customizations go on a separate file
+#+BEGIN_SRC emacs-lisp
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+#+END_SRC
+** Enable auto pairs
+#+BEGIN_SRC emacs-lisp
+(electric-pair-mode 1)
+#+END_SRC
+** Store all backup and autosave files in the tmp dir
+#+BEGIN_SRC emacs-lisp
+(setq backup-directory-alist
+`((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+`((".*" ,temporary-file-directory t)))
+#+END_SRC
+* Evil mode
+** Reset some defaults
+*** Restore default tab functionality in org-mode
+#+BEGIN_SRC emacs-lisp
+(setq evil-want-C-i-jump nil)
+#+END_SRC
+*** Restore default C-u functionality with Evil
+#+BEGIN_SRC emacs-lisp
+(setq evil-want-C-u-scroll t)
+#+END_SRC
+** Initialize Evil mode and friends
+#+BEGIN_SRC emacs-lisp
+(use-package evil
+:ensure t
+:config
+(evil-mode 1)
+
+(use-package evil-leader
+:ensure t
+:config
+(global-evil-leader-mode))
+
+(use-package evil-surround
+:ensure t
+:config
+(global-evil-surround-mode))
+
+(use-package evil-org
+:ensure t
+:after org
+:config
+(add-hook 'org-mode-hook 'evil-org-mode)
+(add-hook 'evil-org-mode-hook
+    (lambda ()
+        (evil-org-set-key-theme))))
+
+(use-package evil-indent-textobject
+:ensure t))
+#+END_SRC
+** Make escape quit most things.
+In Delete Selection mode, if the mark is active, just deactivate it then it takes a second `keyboard-quit` to abort the minibuffer.
+#+BEGIN_SRC emacs-lisp
+(defun minibuffer-keyboard-quit ()
+(interactive)
+(if (and delete-selection-mode transient-mark-mode mark-active)
+    (setq deactivate-mark  t)
+(when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+(abort-recursive-edit)))
+
+(define-key evil-normal-state-map [escape] 'keyboard-escape-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+#+END_SRC
+* Org-mode
+#+BEGIN_SRC emacs-lisp
+(setq org-startup-indented t
+      org-ellipsis "  "
+      org-hide-leading-stars t
+      org-src-fontify-natively t
+      org-pretty-entities t
+      org-hide-emphasis-markers t
+      org-agenda-block-separator ""
+      org-fontify-whole-heading-line t
+      org-fontify-done-headline t
+      org-fontify-quote-and-verse-blocks t)
+#+END_SRC
+** Pretty bullets
+#+BEGIN_SRC emacs-lisp
+(use-package org-bullets
+:ensure t
+:config
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+END_SRC
+* Other stuff
+Use Emacs state in these additional modes
+#+BEGIN_SRC emacs-lisp
+(dolist (mode '())
+(add-to-list 'evil-emacs-state-modes mode))
+#+END_SRC
