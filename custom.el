@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm-ag use-package org-bullets navigate helm-projectile evil-surround evil-org evil-leader evil-indent-textobject afternoon-theme))))
+    (hlinum use-package org-bullets navigate helm-projectile helm-ag evil-surround evil-org evil-leader evil-indent-textobject afternoon-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

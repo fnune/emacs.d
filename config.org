@@ -34,6 +34,7 @@ This is a work-in-progress and I'm trying to adopt Emacs after a relatively long
 #+END_SRC
 * Theme
 #+BEGIN_SRC emacs-lisp
+(setq afternoon-background-color "#1c1c1c")
 (use-package afternoon-theme
   :ensure t)
 (load-theme 'afternoon t)
@@ -68,6 +69,22 @@ This is a work-in-progress and I'm trying to adopt Emacs after a relatively long
 ** Enable visual-line-mode for word wrap
 #+BEGIN_SRC emacs-lisp
 (global-visual-line-mode t)
+#+END_SRC
+** Line numbers
+#+BEGIN_SRC emacs-lisp
+(global-linum-mode 1)
+(set-face-foreground 'linum "#555555")
+(set-face-background 'linum afternoon-background-color)
+(setq linum-format " %4d ")
+#+END_SRC
+
+[[https://github.com/tom-tan/hlinum-mode][hlinum-mode]] highlights the current line for linum
+#+BEGIN_SRC emacs-lisp
+(use-package hlinum
+  :ensure t)
+(set-face-foreground 'linum-highlight-face "white")
+(set-face-background 'linum-highlight-face nil)
+(hlinum-activate)
 #+END_SRC
 * Evil mode
 ** Reset some defaults
