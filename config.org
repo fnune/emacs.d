@@ -5,6 +5,10 @@
 
 #+STARTUP: indent
 
+This is my Emacs configuration file. It's built using org-mode. GitHub can render org files and I've included a symlink README.org -> config.org so GitHub renders my config directly on the repository page.
+
+This is a work-in-progress and I'm trying to adopt Emacs after a relatively long time using [[https://github.com/neovim/neovim][Neovim]]. Both are great projects and I'm having a difficult time abandoning either for the other, so you should check them out.
+
 * Personal information
 #+BEGIN_SRC emacs-lisp
 (setq user-full-name "Fausto Núñez Alberro")
@@ -51,10 +55,13 @@
 #+END_SRC
 ** Store all backup and autosave files in the tmp dir
 #+BEGIN_SRC emacs-lisp
+(defconst emacs-tmp-dir (expand-file-name (format "emacs%d" (user-uid)) temporary-file-directory))
 (setq backup-directory-alist
-`((".*" . ,temporary-file-directory)))
+    `((".*" . ,emacs-tmp-dir)))
 (setq auto-save-file-name-transforms
-`((".*" ,temporary-file-directory t)))
+    `((".*" ,emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix
+    emacs-tmp-dir)
 #+END_SRC
 * Evil mode
 ** Reset some defaults
