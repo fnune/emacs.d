@@ -126,7 +126,8 @@ Sorry Richard
 #+END_SRC
 ** Reduce startup screen noise
 #+BEGIN_SRC emacs-lisp
-(setq inhibit-startup-message 't)
+(setq inhibit-startup-message t)
+(setq initial-scratch-message nil)
 #+END_SRC
 ** Drag stuff up and down
 #+BEGIN_SRC emacs-lisp
