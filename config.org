@@ -49,6 +49,14 @@ Override some theme defaults
 (set-face-attribute 'region nil :background visual-selected-background-color)
 #+END_SRC
 * Sane defaults
+** Unset keybindings
+Sorry Richard
+#+BEGIN_SRC emacs-lisp
+(defun add-kbd (key) (kbd key))
+(defvar keybindings-to-unset '("M-k" "M-j"))
+(dolist (key (mapcar 'add-kbd keybindings-to-unset))
+  (global-unset-key key))
+#+END_SRC
 ** Turn off UI elements
 #+BEGIN_SRC emacs-lisp
 (menu-bar-mode -1)
@@ -119,6 +127,14 @@ Override some theme defaults
 ** Reduce startup screen noise
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-message 't)
+#+END_SRC
+** Drag stuff up and down
+#+BEGIN_SRC emacs-lisp
+(use-package drag-stuff
+  :ensure t)
+(drag-stuff-global-mode 1)
+(global-set-key (kbd "M-k") 'drag-stuff-up)
+(global-set-key (kbd "M-j") 'drag-stuff-down)
 #+END_SRC
 * Evil mode
 ** Reset some defaults
