@@ -152,6 +152,11 @@ Sorry Richard
 (global-set-key (kbd "M-k") 'drag-stuff-up)
 (global-set-key (kbd "M-j") 'drag-stuff-down)
 #+END_SRC
+** Highlight matching parens with zero delay
+#+BEGIN_SRC emacs-lisp
+(setq show-paren-delay 0)
+(show-paren-mode 1)
+#+END_SRC
 * Evil mode
 ** Reset some defaults
 *** Restore default tab functionality in org-mode
