@@ -23,6 +23,18 @@ This is a work-in-progress and I'm trying to adopt Emacs after a relatively long
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 #+END_SRC
+* Server and client setup
+Start the server:
+#+BEGIN_SRC emacs-lisp
+(server-start)
+#+END_SRC
+** EDITOR env variable and git config
+With this EDITOR env variable, Emacs can lazy start the server and connect to it if it exists. My git configuration uses the global $EDITOR too.
+#+BEGIN_SRC bash
+export EDITOR='emacsclient -nw -c -a ""'
+#+END_SRC
+** Important note about emacsclient not loading eyecandy
+At the end of the config file we include some hooks to reload eyecandy that gets reset when connecting a client to the server.
 * Set up use-package
 #+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'use-package)
@@ -37,16 +49,21 @@ Set some variables to override some defaults later on
 #+BEGIN_SRC emacs-lisp
 (setq afternoon-background-color "#1c1c1c")
 (setq visual-selected-background-color "#2c2c2c")
+(setq my-theme 'afternoon)
+#+END_SRC
+Add a function to override the defaults
+#+BEGIN_SRC emacs-lisp
+(defun override-theme-defaults () (set-face-attribute 'region nil :background visual-selected-background-color))
 #+END_SRC
 Initialize [[https://github.com/osener/emacs-afternoon-theme][emacs-afternoon-theme]].
 #+BEGIN_SRC emacs-lisp
 (use-package afternoon-theme
   :ensure t)
-(load-theme 'afternoon t)
+(load-theme my-theme t)
 #+END_SRC
 Override some theme defaults
 #+BEGIN_SRC emacs-lisp
-(set-face-attribute 'region nil :background visual-selected-background-color)
+(override-theme-defaults)
 #+END_SRC
 * Sane defaults
 ** Unset keybindings
@@ -92,8 +109,10 @@ Sorry Richard
 ** Line numbers
 #+BEGIN_SRC emacs-lisp
 (global-linum-mode 1)
-(set-face-foreground 'linum "#555555")
-(set-face-background 'linum afternoon-background-color)
+(defun configure-linum-colors ()
+    (set-face-foreground 'linum "#555555")
+    (set-face-background 'linum afternoon-background-color))
+(configure-linum-colors)
 (setq linum-format " %4d ")
 #+END_SRC
 
@@ -247,9 +266,19 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
 (use-package helm-ag
   :ensure t)
 #+END_SRC
-* Other stuff
-Use Emacs state in these additional modes
+* Emacsclient rice reloading
+Make a list of things we want to reevaluate when connecting to the server
 #+BEGIN_SRC emacs-lisp
-(dolist (mode '())
-(add-to-list 'evil-emacs-state-modes mode))
+(defun reevaluate-eyecandy ()
+    (load-theme my-theme t)
+    (override-theme-defaults)
+    (configure-linum-colors))
+#+END_SRC
+Reload the theme and eyecandy settings when a new frame opens if running a server
+#+BEGIN_SRC emacs-lisp
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+        (lambda (frame)
+            (select-frame frame)
+            (reevaluate-eyecandy))))
 #+END_SRC
