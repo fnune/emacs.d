@@ -231,7 +231,8 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
 (evil-leader/set-key
   "f" 'helm-projectile-find-file
   "F" 'helm-projectile-ag
-  "q" 'save-buffers-kill-terminal)
+  "q" 'save-buffers-kill-terminal
+  "t" 'neotree-toggle)
 #+END_SRC
 * Org-mode
 #+BEGIN_SRC emacs-lisp
@@ -265,6 +266,17 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
   :ensure t)
 (use-package helm-ag
   :ensure t)
+#+END_SRC
+* Neotree
+#+BEGIN_SRC emacs-lisp
+(use-package neotree :ensure t)
+#+END_SRC
+If you use evil-mode, by default some of evil key bindings conflict with neotree-mode keys.
+#+BEGIN_SRC emacs-lisp
+(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
 #+END_SRC
 * Emacsclient rice reloading
 Make a list of things we want to reevaluate when connecting to the server
