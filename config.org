@@ -189,6 +189,14 @@ bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
 bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\/)n?vim(diff)?$|emacs.*$' && tmux send-keys C-k) || tmux select-pane -U"
 bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\/)n?vim(diff)?$|emacs.*$' && tmux send-keys C-l) || tmux select-pane -R"
 #+END_SRC
+** Evil Leader keybindings
+#+BEGIN_SRC emacs-lisp
+(evil-leader/set-leader "<SPC>")
+(evil-leader/set-key
+  "f" 'helm-projectile-find-file
+  "F" 'helm-projectile-ag
+  "q" 'save-buffers-kill-terminal)
+#+END_SRC
 * Org-mode
 #+BEGIN_SRC emacs-lisp
 (setq org-startup-indented t
