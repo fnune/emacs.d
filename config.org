@@ -24,10 +24,6 @@ This is a work-in-progress and I'm trying to adopt Emacs after a relatively long
 (package-initialize)
 #+END_SRC
 * Server and client setup
-Start the server:
-#+BEGIN_SRC emacs-lisp
-(server-start)
-#+END_SRC
 ** EDITOR env variable and git config
 With this EDITOR env variable, Emacs can lazy start the server and connect to it if it exists. My git configuration uses the global $EDITOR too.
 #+BEGIN_SRC bash
