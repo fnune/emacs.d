@@ -3,6 +3,7 @@ config.el
 *.pdf
 *.tex
 *.md
+emojis
 elpa
 network-security.data
 ac-comphist.dat

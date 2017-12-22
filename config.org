@@ -233,7 +233,8 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
   "f" 'helm-projectile-find-file
   "F" 'helm-projectile-ag
   "q" 'save-buffers-kill-terminal
-  "t" 'neotree-toggle)
+  "t" 'neotree-toggle
+  "e" 'emojify-insert-emoji)
 #+END_SRC
 * Org-mode
 #+BEGIN_SRC emacs-lisp
@@ -285,6 +286,14 @@ If you use evil-mode, by default some of evil key bindings conflict with neotree
   :ensure t
   :init
   (ac-config-default))
+#+END_SRC
+* Emojify
+#+BEGIN_SRC emacs-lisp
+(use-package emojify
+  :ensure t
+  :init
+    (add-hook 'after-init-hook #'global-emojify-mode)
+    (emojify-set-emoji-styles '(unicode)))
 #+END_SRC
 * Emacsclient rice reloading
 Make a list of things we want to reevaluate when connecting to the server
