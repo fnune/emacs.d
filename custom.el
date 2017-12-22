@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (neotree web-mode use-package rjsx-mode org-bullets navigate hlinum helm-projectile helm-ag exec-path-from-shell evil-surround evil-org evil-leader evil-indent-textobject drag-stuff afternoon-theme))))
+    (auto-complete neotree helm-ag helm-projectile projectile helm org-bullets navigate evil-indent-textobject evil-org evil-surround evil-leader evil drag-stuff exec-path-from-shell hlinum afternoon-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

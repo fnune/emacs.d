@@ -5,4 +5,5 @@ config.el
 *.md
 elpa
 network-security.data
+ac-comphist.dat
 *projectile*
