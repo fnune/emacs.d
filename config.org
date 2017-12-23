@@ -322,6 +322,10 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
     (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.ts[x]?\\'" . web-mode)))
 #+END_SRC
+*** Yaml-mode
+#+BEGIN_SRC emacs-lisp
+(use-package yaml-mode :ensure t)
+#+END_SRC
 * Emacsclient rice reloading
 Make a list of things we want to reevaluate when connecting to the server
 #+BEGIN_SRC emacs-lisp
