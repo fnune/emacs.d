@@ -305,6 +305,21 @@ If you use evil-mode, by default some of evil key bindings conflict with neotree
 (diff-hl-margin-mode 1)
 (diff-hl-flydiff-mode 1)
 #+END_SRC
+* Language-specific
+** Web languages
+*** Web-mode
+Initialize web-mode and recognize extensions. Also consider the possibility of JSX files with a .js extension istead of .jsx.
+#+BEGIN_SRC emacs-lisp
+(use-package web-mode
+  :ensure t
+  :init
+    (setq web-mode-content-types-alist '(("jsx"  . "\\.js[x]?\\'")))
+  :config
+    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.[s]?css?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.erb?\\'" . web-mode)))
+#+END_SRC
 * Emacsclient rice reloading
 Make a list of things we want to reevaluate when connecting to the server
 #+BEGIN_SRC emacs-lisp
