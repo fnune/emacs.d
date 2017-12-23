@@ -320,8 +320,8 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
 (use-package web-mode
   :ensure t
   :init
-    (setq web-mode-content-types-alist '(("jsx"  . "\\.js[x]?\\'")))
-    (setq web-mode-content-types-alist '(("jsx"  . "\\.ts[x]?\\'")))
+    (setq web-mode-content-types-alist '(("jsx" . "\\.tsx\\'")))
+    (setq web-mode-content-types-alist '(("jsx" . "\\.js\\'")))
   :config
     (add-to-list 'auto-mode-alist '("\\.[s]?css?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.erb?\\'" . web-mode))
