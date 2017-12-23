@@ -314,11 +314,13 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
   :ensure t
   :init
     (setq web-mode-content-types-alist '(("jsx"  . "\\.js[x]?\\'")))
+    (setq web-mode-content-types-alist '(("jsx"  . "\\.ts[x]?\\'")))
   :config
+    (add-to-list 'auto-mode-alist '("\\.[s]?css?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.erb?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.[s]?css?\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.erb?\\'" . web-mode)))
+    (add-to-list 'auto-mode-alist '("\\.ts[x]?\\'" . web-mode)))
 #+END_SRC
 * Emacsclient rice reloading
 Make a list of things we want to reevaluate when connecting to the server
