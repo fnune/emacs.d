@@ -43,9 +43,8 @@ At the end of the config file we include some hooks to reload eyecandy that gets
 * Theme
 Set some variables to override some defaults later on
 #+BEGIN_SRC emacs-lisp
-(setq afternoon-background-color "#1c1c1c")
 (setq visual-selected-background-color "#2c2c2c")
-(setq my-theme 'afternoon)
+(setq my-theme 'badger)
 #+END_SRC
 Add a function to override the defaults
 #+BEGIN_SRC emacs-lisp
@@ -53,7 +52,7 @@ Add a function to override the defaults
 #+END_SRC
 Initialize [[https://github.com/osener/emacs-afternoon-theme][emacs-afternoon-theme]].
 #+BEGIN_SRC emacs-lisp
-(use-package afternoon-theme
+(use-package badger-theme
   :ensure t)
 (load-theme my-theme t)
 #+END_SRC
@@ -106,8 +105,7 @@ Sorry Richard
 #+BEGIN_SRC emacs-lisp
 (global-linum-mode 1)
 (defun configure-linum-colors ()
-    (set-face-foreground 'linum "#555555")
-    (set-face-background 'linum afternoon-background-color))
+    (set-face-foreground 'linum "#555555"))
 (configure-linum-colors)
 (setq linum-format " %4d ")
 #+END_SRC
