@@ -50,7 +50,7 @@ Add a function to override the defaults
 #+BEGIN_SRC emacs-lisp
 (defun override-theme-defaults () (set-face-attribute 'region nil :background visual-selected-background-color))
 #+END_SRC
-Initialize [[https://github.com/osener/emacs-afternoon-theme][emacs-afternoon-theme]].
+Initialize [[https://github.com/ccann/badger-theme][badger-theme]].
 #+BEGIN_SRC emacs-lisp
 (use-package badger-theme
   :ensure t)
