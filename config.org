@@ -171,17 +171,23 @@ Sorry Richard
 :ensure t
 :config
 (evil-mode 1)
-
+#+END_SRC
+*** Leader
+#+BEGIN_SRC emacs-lisp
 (use-package evil-leader
 :ensure t
 :config
 (global-evil-leader-mode))
-
+#+END_SRC
+*** Surround mode
+#+BEGIN_SRC emacs-lisp
 (use-package evil-surround
 :ensure t
 :config
 (global-evil-surround-mode))
-
+#+END_SRC
+*** Org
+#+BEGIN_SRC emacs-lisp
 (use-package evil-org
 :ensure t
 :after org
@@ -190,15 +196,21 @@ Sorry Richard
 (add-hook 'evil-org-mode-hook
     (lambda ()
         (evil-org-set-key-theme))))
-
+#+END_SRC
+*** Indent textobject
+#+BEGIN_SRC emacs-lisp
 (use-package evil-indent-textobject
 :ensure t)
+#+END_SRC
 
+#+BEGIN_SRC emacs-lisp
 (use-package evil-commentary
 :ensure t
 :config
 (evil-commentary-mode)))
-
+#+END_SRC
+*** Cursor changer
+#+BEGIN_SRC emacs-lisp
 (use-package evil-terminal-cursor-changer
 :ensure t
 :init
