@@ -3,6 +3,7 @@
 #+AUTHOR: Fausto Núñez Alberro
 #+EMAIL: fausto.nunez@mailbox.org
 
+#+STARTUP: content
 #+STARTUP: indent
 
 This is my Emacs configuration file. It's built using org-mode. GitHub can render org files and I've included a symlink README.org -> config.org so GitHub renders my config directly on the repository page.
