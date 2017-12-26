@@ -242,7 +242,8 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
   "F" 'helm-projectile-ag
   "q" 'save-buffers-kill-terminal
   "t" 'neotree-toggle
-  "e" 'emojify-insert-emoji)
+  "e" 'emojify-insert-emoji
+  "g" 'magit)
 #+END_SRC
 * Org-mode
 #+BEGIN_SRC emacs-lisp
