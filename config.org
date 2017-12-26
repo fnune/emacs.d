@@ -336,6 +336,15 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
 (use-package rust-mode
   :ensure t)
 #+END_SRC
+** Markdown
+#+BEGIN_SRC emacs-lisp
+(use-package markdown-mode
+  :ensure t
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+#+END_SRC
 * Emacsclient rice reloading
 Make a list of things we want to reevaluate when connecting to the server
 #+BEGIN_SRC emacs-lisp
