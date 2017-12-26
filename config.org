@@ -192,7 +192,12 @@ Sorry Richard
         (evil-org-set-key-theme))))
 
 (use-package evil-indent-textobject
-:ensure t))
+:ensure t)
+
+(use-package evil-commentary
+:ensure t
+:config
+(evil-commentary-mode)))
 #+END_SRC
 ** Make escape quit most things
 In Delete Selection mode, if the mark is active, just deactivate it then it takes a second `keyboard-quit` to abort the minibuffer.
@@ -224,6 +229,11 @@ bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
 bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\/)n?vim(diff)?$|emacs.*$' && tmux send-keys C-k) || tmux select-pane -U"
 bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\/)n?vim(diff)?$|emacs.*$' && tmux send-keys C-l) || tmux select-pane -R"
 #+END_SRC
+** Navigate visual lines with j and k.
+#+BEGIN_SRC emacs-lisp
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+#+END_SRC
 ** Evil Leader keybindings
 #+BEGIN_SRC emacs-lisp
 (evil-leader/set-leader "<SPC>")
@@ -233,11 +243,6 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
   "q" 'save-buffers-kill-terminal
   "t" 'neotree-toggle
   "e" 'emojify-insert-emoji)
-#+END_SRC
-Navigate visual lines with j and k.
-#+BEGIN_SRC emacs-lisp
-(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
-(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 #+END_SRC
 * Org-mode
 #+BEGIN_SRC emacs-lisp
