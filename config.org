@@ -234,6 +234,11 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
   "t" 'neotree-toggle
   "e" 'emojify-insert-emoji)
 #+END_SRC
+Navigate visual lines with j and k.
+#+BEGIN_SRC emacs-lisp
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+#+END_SRC
 * Org-mode
 #+BEGIN_SRC emacs-lisp
 (setq org-startup-indented t
