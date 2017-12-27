@@ -62,47 +62,18 @@ Override some theme defaults
 (override-theme-defaults)
 #+END_SRC
 * Sane defaults
-** Unset keybindings
-Sorry Richard
-#+BEGIN_SRC emacs-lisp
-(defun add-kbd (key) (kbd key))
-(defvar keybindings-to-unset '("M-k" "M-j"))
-(dolist (key (mapcar 'add-kbd keybindings-to-unset))
-  (global-unset-key key))
-#+END_SRC
-** Turn off UI elements
+** Interface
+*** Turn off UI elements
 #+BEGIN_SRC emacs-lisp
 (menu-bar-mode -1)
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 #+END_SRC
-** Say y or n instead of yes or no
+*** Say y or n instead of yes or no
 #+BEGIN_SRC emacs-lisp
 (defalias 'yes-or-no-p 'y-or-n-p)
 #+END_SRC
-** Emacs system customizations go on a separate file
-#+BEGIN_SRC emacs-lisp
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-#+END_SRC
-** Enable auto pairs
-#+BEGIN_SRC emacs-lisp
-(electric-pair-mode 1)
-#+END_SRC
-** Store all backup and autosave files in the tmp dir
-#+BEGIN_SRC emacs-lisp
-(defconst emacs-tmp-dir (expand-file-name (format "emacs%d" (user-uid)) temporary-file-directory))
-(setq backup-directory-alist
-    `((".*" . ,emacs-tmp-dir)))
-(setq auto-save-file-name-transforms
-    `((".*" ,emacs-tmp-dir t)))
-(setq auto-save-list-file-prefix
-    emacs-tmp-dir)
-#+END_SRC
-** Enable visual-line-mode for word wrap
-#+BEGIN_SRC emacs-lisp
-(global-visual-line-mode t)
-#+END_SRC
-** Line numbers
+*** Line numbers
 #+BEGIN_SRC emacs-lisp
 (global-linum-mode 1)
 (defun configure-linum-colors ()
@@ -119,17 +90,32 @@ Sorry Richard
 (set-face-background 'linum-highlight-face nil)
 (hlinum-activate)
 #+END_SRC
-** Standard indentation & no tabs
-#+BEGIN_SRC emacs-lisp
-(setq standard-indent 2)
-(setq-default indent-tabs-mode nil)
-#+END_SRC
-** Show line and column in the mode-line
+*** Show line and column in the mode-line
 #+BEGIN_SRC emacs-lisp
 (line-number-mode 1)
 (column-number-mode 1)
 #+END_SRC
-** Ensure that the system PATH is the one used by Emacs
+*** Reduce startup screen noise
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+(setq initial-scratch-message nil)
+#+END_SRC
+** Initialization
+*** Emacs system customizations go on a separate file
+#+BEGIN_SRC emacs-lisp
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+#+END_SRC
+*** Store all backup and autosave files in the tmp dir
+#+BEGIN_SRC emacs-lisp
+(defconst emacs-tmp-dir (expand-file-name (format "emacs%d" (user-uid)) temporary-file-directory))
+(setq backup-directory-alist
+    `((".*" . ,emacs-tmp-dir)))
+(setq auto-save-file-name-transforms
+    `((".*" ,emacs-tmp-dir t)))
+(setq auto-save-list-file-prefix
+    emacs-tmp-dir)
+#+END_SRC
+*** Ensure that the system PATH is the one used by Emacs
 #+BEGIN_SRC emacs-lisp
 (use-package exec-path-from-shell
   :ensure t
@@ -138,12 +124,29 @@ Sorry Richard
   :config
     (exec-path-from-shell-initialize))
 #+END_SRC
-** Reduce startup screen noise
+** Editing
+*** Unset keybindings
+Sorry Richard
 #+BEGIN_SRC emacs-lisp
-(setq inhibit-startup-message t)
-(setq initial-scratch-message nil)
+(defun add-kbd (key) (kbd key))
+(defvar keybindings-to-unset '("M-k" "M-j"))
+(dolist (key (mapcar 'add-kbd keybindings-to-unset))
+  (global-unset-key key))
 #+END_SRC
-** Drag stuff up and down
+*** Enable auto pairs
+#+BEGIN_SRC emacs-lisp
+(electric-pair-mode 1)
+#+END_SRC
+*** Enable visual-line-mode for word wrap
+#+BEGIN_SRC emacs-lisp
+(global-visual-line-mode t)
+#+END_SRC
+*** Standard indentation & no tabs
+#+BEGIN_SRC emacs-lisp
+(setq standard-indent 2)
+(setq-default indent-tabs-mode nil)
+#+END_SRC
+*** Drag stuff up and down
 #+BEGIN_SRC emacs-lisp
 (use-package drag-stuff
   :ensure t)
@@ -151,7 +154,7 @@ Sorry Richard
 (global-set-key (kbd "M-k") 'drag-stuff-up)
 (global-set-key (kbd "M-j") 'drag-stuff-down)
 #+END_SRC
-** Highlight matching parens with zero delay
+*** Highlight matching parens with zero delay
 #+BEGIN_SRC emacs-lisp
 (setq show-paren-delay 0)
 (show-paren-mode 1)
