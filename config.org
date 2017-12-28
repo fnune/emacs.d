@@ -22,6 +22,8 @@ This is a work-in-progress and I'm trying to adopt Emacs after a relatively long
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 #+END_SRC
 * Server and client setup
@@ -198,8 +200,8 @@ Sorry Richard
 :config
 (add-hook 'org-mode-hook 'evil-org-mode)
 (add-hook 'evil-org-mode-hook
-    (lambda ()
-        (evil-org-set-key-theme))))
+(lambda ()
+    (evil-org-set-key-theme))))
 #+END_SRC
 *** Indent textobject
 #+BEGIN_SRC emacs-lisp
@@ -286,12 +288,23 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
       org-fontify-done-headline t
       org-fontify-quote-and-verse-blocks t)
 #+END_SRC
+** Explicitly use org to get the latest version
+#+BEGIN_SRC emacs-lisp
+(use-package org
+:ensure org-plus-contrib)
+#+END_SRC
 ** Pretty bullets
 #+BEGIN_SRC emacs-lisp
 (use-package org-bullets
 :ensure t
 :config
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+END_SRC
+** Set the face for ellipses
+Setting the foreground color to ~nil~ causes the ellipsis to take the color of its heading.
+#+BEGIN_SRC emacs-lisp
+(custom-set-faces
+ '(org-ellipsis ((t (:foreground nil)))))
 #+END_SRC
 * Helm & Projectile
 #+BEGIN_SRC emacs-lisp
