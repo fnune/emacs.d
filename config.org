@@ -278,6 +278,7 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
       org-ellipsis "  "
       org-hide-leading-stars t
       org-src-fontify-natively t
+      org-src-tab-acts-natively t
       org-pretty-entities t
       org-hide-emphasis-markers t
       org-agenda-block-separator ""
