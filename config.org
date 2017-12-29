@@ -194,14 +194,13 @@ Sorry Richard
 #+END_SRC
 *** Org
 #+BEGIN_SRC emacs-lisp
-(use-package evil-org
-:ensure t
-:after org
-:config
-(add-hook 'org-mode-hook 'evil-org-mode)
-(add-hook 'evil-org-mode-hook
-(lambda ()
-    (evil-org-set-key-theme))))
+  (use-package evil-org
+  :ensure t
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'evil-org-mode-hook
+  (lambda () (evil-org-set-key-theme))))
 #+END_SRC
 *** Indent textobject
 #+BEGIN_SRC emacs-lisp
@@ -265,14 +264,25 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
 #+END_SRC
 ** Evil Leader keybindings
 #+BEGIN_SRC emacs-lisp
-(evil-leader/set-leader "<SPC>")
-(evil-leader/set-key
-  "f" 'helm-projectile-find-file
-  "F" 'helm-projectile-ag
-  "q" 'save-buffers-kill-terminal
-  "t" 'neotree-toggle
-  "e" 'emojify-insert-emoji
-  "g" 'magit)
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key
+    "f" 'helm-projectile-find-file
+    "F" 'helm-projectile-ag
+    "q" 'save-buffers-kill-terminal
+    "t" 'neotree-toggle
+    "e" 'emojify-insert-emoji
+    "g" 'magit)
+#+END_SRC
+** Evil Leader org keybindings
+#+BEGIN_SRC emacs-lisp
+  (evil-leader/set-key-for-mode 'org-mode
+    "A" 'org-archive-subtree
+    "a" 'org-agenda
+    "c" 'org-capture
+    "d" 'org-deadline
+    "l" 'evil-org-open-links
+    "s" 'org-schedule
+    "t" 'org-todo)
 #+END_SRC
 * Org-mode
 #+BEGIN_SRC emacs-lisp
