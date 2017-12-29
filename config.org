@@ -356,7 +356,7 @@ For starters, I'll be using a setup similar to the one specified in [[https://em
 *** Keywords for TODOs
 Documentation about tracking state changes in TODOs can be found [[http://orgmode.org/manual/Tracking-TODO-state-changes.html][here]].
 #+BEGIN_SRC emacs-lisp
-(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w!)" "|" "DONE(d!)" "CANCELLED(c!)")))
+(setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAITING(w!)" "|" "DONE(d!)" "CANCELLED(c!)")))
 #+END_SRC
 **** Log changes into the LOGBOOK and not as text inside the headling
 #+BEGIN_SRC emacs-lisp
