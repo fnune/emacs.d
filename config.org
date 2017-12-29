@@ -362,6 +362,16 @@ Documentation about tracking state changes in TODOs can be found [[http://orgmod
 #+BEGIN_SRC emacs-lisp
 (setq org-log-into-drawer 'LOGBOOK)
 #+END_SRC
+*** Define tags, a.k.a. contexts
+#+BEGIN_SRC emacs-lisp
+(setq org-tag-alist
+  '(("work" . ?w)
+    ("home" . ?h)
+    ("computer" . ?c)
+    ("phone" . ?p)
+    ("brain" . ?b)
+    ("out" . ?o)))
+#+END_SRC
 * Helm & Projectile
 #+BEGIN_SRC emacs-lisp
 (use-package helm
