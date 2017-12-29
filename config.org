@@ -362,6 +362,12 @@ Documentation about tracking state changes in TODOs can be found [[http://orgmod
 #+BEGIN_SRC emacs-lisp
 (setq org-log-into-drawer 'LOGBOOK)
 #+END_SRC
+**** Color TODO keywords
+Documentation on available colors can be found [[http://raebear.net/comp/emacscolors.html][here]].
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keyword-faces
+ '(("WAITING" . "grey20") ("CANCELED" . "darkred") ("NEXT" . "orange")))
+#+END_SRC
 *** Define tags, a.k.a. contexts
 #+BEGIN_SRC emacs-lisp
 (setq org-tag-alist
