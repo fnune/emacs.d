@@ -328,6 +328,21 @@ For starters, I'll be using a setup similar to the one specified in [[https://em
                            (,someday :level . 1)
                            (,tickler :maxlevel . 2)))
 #+END_SRC
+*** Org-capture templates
+**** Enter insert mode when capturing
+#+BEGIN_SRC emacs-lisp
+(add-hook 'org-capture-mode-hook 'evil-insert-state)
+#+END_SRC
+**** Define and register capture templates
+#+BEGIN_SRC emacs-lisp
+(defvar inbox-capture-template "* %i%?")
+(defvar todo-capture-template "* TODO %i%?")
+(defvar tickler-capture-template "* %i%?")
+
+(setq org-capture-templates `(("i" "Inbox" entry (file+headline inbox "Inbox") ,inbox-capture-template)
+                              ("t" "Inbox [TODO]" entry (file+headline inbox "Inbox") ,todo-capture-template)
+                              ("T" "Tickler" entry (file+headline tickler "Tickler") ,tickler-capture-template)))
+#+END_SRC
 * Helm & Projectile
 #+BEGIN_SRC emacs-lisp
 (use-package helm
