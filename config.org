@@ -306,6 +306,17 @@ Setting the foreground color to ~nil~ causes the ellipsis to take the color of i
 (custom-set-faces
  '(org-ellipsis ((t (:foreground nil)))))
 #+END_SRC
+** GTD
+For starters, I'll be using a setup similar to the one specified in [[https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html][this post by Nicolas Petton]].
+*** Root directory for GTD-related stuff
+#+BEGIN_SRC emacs-lisp
+(setq gtd-base-path (expand-file-name "~/Projects/"))
+(defun prepend-gtd-base-path (sub-path) (concat gtd-base-path sub-path))
+#+END_SRC
+*** Specify agenda-relevant files
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-files (mapcar 'prepend-gtd-base-path '("inbox.org" "projects.org" "tickler.org")))
+#+END_SRC
 * Helm & Projectile
 #+BEGIN_SRC emacs-lisp
 (use-package helm
