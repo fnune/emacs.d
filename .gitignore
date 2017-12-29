@@ -1,10 +1,11 @@
-config.el
 *.html
+*.md
 *.pdf
 *.tex
-*.md
-emojis
-elpa
-network-security.data
-ac-comphist.dat
 *projectile*
+ac-comphist.dat
+bookmarks
+config.el
+elpa
+emojis
+network-security.data

@@ -343,6 +343,15 @@ For starters, I'll be using a setup similar to the one specified in [[https://em
                               ("t" "Inbox [TODO]" entry (file+headline inbox "Inbox") ,todo-capture-template)
                               ("T" "Tickler" entry (file+headline tickler "Tickler") ,tickler-capture-template)))
 #+END_SRC
+*** Keywords for TODOs
+Documentation about tracking state changes in TODOs can be found [[http://orgmode.org/manual/Tracking-TODO-state-changes.html][here]].
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w!)" "|" "DONE(d!)" "CANCELLED(c!)")))
+#+END_SRC
+**** Log changes into the LOGBOOK and not as text inside the headling
+#+BEGIN_SRC emacs-lisp
+(setq org-log-into-drawer 'LOGBOOK)
+#+END_SRC
 * Helm & Projectile
 #+BEGIN_SRC emacs-lisp
 (use-package helm
