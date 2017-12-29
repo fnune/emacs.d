@@ -269,6 +269,7 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
     "f" 'helm-projectile-find-file
     "F" 'helm-projectile-ag
     "q" 'save-buffers-kill-terminal
+    "w" 'save-buffer
     "t" 'neotree-toggle
     "e" 'emojify-insert-emoji
     "g" 'magit)
