@@ -311,6 +311,11 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
 :config
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
+** Make agenda show a full-sized screen always
+Usually when I use the agenda I concentrate only on what's inside and I don't need to cross-reference with other windows.
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-window-setup 'only-window)
+#+END_SRC
 ** Set the face for ellipses
 Setting the foreground color to ~nil~ causes the ellipsis to take the color of its heading.
 #+BEGIN_SRC emacs-lisp
