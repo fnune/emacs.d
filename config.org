@@ -489,6 +489,31 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
   :config
   (editorconfig-mode 1))
 #+END_SRC
+* Flycheck
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :init
+  (setq flycheck-indication-mode 'right-fringe)
+  (setq flycheck-display-errors-delay nil)
+  (global-flycheck-mode))
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(defun my/use-eslint-from-node-modules ()
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root
+                      (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                        root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable eslint))))
+
+(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+#+END_SRC
 * Emacsclient rice reloading
 Make a list of things we want to reevaluate when connecting to the server
 #+BEGIN_SRC emacs-lisp
