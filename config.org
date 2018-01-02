@@ -117,6 +117,11 @@ Override some theme defaults
 (setq auto-save-list-file-prefix
     emacs-tmp-dir)
 #+END_SRC
+*** Do not create lockfiles - I'm the only user
+I'm not sure about the rationale behind this setting, but the auto-generated files are an annoyance, so they walk the plank.
+#+BEGIN_SRC emacs-lisp
+(setq create-lockfiles nil)
+#+END_SRC
 ** Editing
 *** Unset keybindings
 Sorry Richard
