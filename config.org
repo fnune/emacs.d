@@ -117,15 +117,6 @@ Override some theme defaults
 (setq auto-save-list-file-prefix
     emacs-tmp-dir)
 #+END_SRC
-*** Ensure that the system PATH is the one used by Emacs
-#+BEGIN_SRC emacs-lisp
-(use-package exec-path-from-shell
-  :ensure t
-  :init
-    (setq exec-path-from-shell-check-startup-files nil)
-  :config
-    (exec-path-from-shell-initialize))
-#+END_SRC
 ** Editing
 *** Unset keybindings
 Sorry Richard
