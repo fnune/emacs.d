@@ -480,6 +480,13 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.tex.tera\\'" . latex-mode))
 #+END_SRC
+* Editorconfig
+#+BEGIN_SRC emacs-lisp
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+#+END_SRC
 * Emacsclient rice reloading
 Make a list of things we want to reevaluate when connecting to the server
 #+BEGIN_SRC emacs-lisp
