@@ -173,10 +173,12 @@ Sorry Richard
 #+END_SRC
 ** Initialize Evil mode and friends
 #+BEGIN_SRC emacs-lisp
-(use-package evil
-:ensure t
-:config
-(evil-mode 1)
+  (use-package evil
+  :ensure t
+  :init
+  (setq evil-vsplit-window-right t)
+  :config
+  (evil-mode 1)
 #+END_SRC
 *** Leader
 #+BEGIN_SRC emacs-lisp
@@ -268,7 +270,7 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
   (evil-leader/set-key
     "f" 'helm-projectile-find-file
     "F" 'helm-projectile-ag
-    "q" 'save-buffers-kill-terminal
+    "q" 'kill-buffer-and-window
     "w" 'save-buffer
     "t" 'neotree-toggle
     "e" 'emojify-insert-emoji
