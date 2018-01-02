@@ -486,17 +486,22 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
   (editorconfig-mode 1))
 #+END_SRC
 * Flycheck
+Flycheck is used for on-the-fly linting. We want it to display linter warnings and errors on the right fringe, because otherwise it conflicts with the line numbers.
+We set a zero delay to show the error message on the status bar below, and set a 0.2 second delay to avoid machine-gunning =eslint=.
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck
     :ensure t
     :init
   (setq flycheck-indication-mode 'right-fringe)
   (setq flycheck-display-errors-delay nil)
+  (setq flycheck-idle-change-delay 0.2)
   (global-flycheck-mode))
 #+END_SRC
+** Add =eslint= to the available checkers.
 #+BEGIN_SRC emacs-lisp
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 #+END_SRC
+** Make sure the =eslint= instance is the one local to the project
 #+BEGIN_SRC emacs-lisp
 (defun my/use-eslint-from-node-modules ()
   (let* ((root (locate-dominating-file
