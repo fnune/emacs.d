@@ -495,7 +495,7 @@ We set a zero delay to show the error message on the status bar below, and set a
     :init
   (setq flycheck-indication-mode nil)
   (setq flycheck-display-errors-delay nil)
-  (setq flycheck-idle-change-delay 0.2)
+  (setq flycheck-idle-change-delay 2)
   (global-flycheck-mode))
 #+END_SRC
 ** Add =eslint= to the available checkers.
