@@ -266,7 +266,7 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
   (evil-leader/set-key
     "f" 'helm-projectile-find-file
     "F" 'helm-projectile-ag
-    "q" 'kill-buffer-and-window
+    "q" 'evil-quit
     "w" 'save-buffer
     "t" 'neotree-toggle
     "e" 'emojify-insert-emoji
