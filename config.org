@@ -523,6 +523,12 @@ We set a zero delay to show the error message on the status bar below, and set a
 
 (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
 #+END_SRC
+** Use <leader>[jk] to navigate to the next and previous error
+#+BEGIN_SRC emacs-lisp
+(evil-leader/set-key
+  "j" 'flycheck-next-error
+  "k" 'flycheck-previous-error)
+#+END_SRC
 * Emacsclient rice reloading
 Make a list of things we want to reevaluate when connecting to the server
 #+BEGIN_SRC emacs-lisp
