@@ -102,6 +102,16 @@ Override some theme defaults
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
 #+END_SRC
+*** Disable "Text is read-only" warning
+I find it annoying because it makes it hard to find the cursor after it appears. Solution found [[https://emacs.stackexchange.com/questions/19742/is-there-a-way-to-disable-the-buffer-is-read-only-warning][on this StackOverflow question]].
+#+BEGIN_SRC emacs-lisp
+(defun my-command-error-function (data context caller)
+  "Ignore the buffer-read-only signal; pass the rest to the default handler."
+  (when (not (eq (car data) 'text-read-only))
+    (command-error-default-function data context caller)))
+
+(setq command-error-function #'my-command-error-function)
+#+END_SRC
 ** Initialization
 *** Emacs system customizations go on a separate file
 #+BEGIN_SRC emacs-lisp

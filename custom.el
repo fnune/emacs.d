@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit-gh-pulls yaml-mode web-mode use-package rust-mode org-plus-contrib org-bullets neotree navigate markdown-mode hlinum helm-projectile helm-ag flycheck evil-terminal-cursor-changer evil-surround evil-org evil-magit evil-leader evil-indent-textobject evil-commentary emojify editorconfig drag-stuff diff-hl beacon badger-theme auto-complete))))
+    (yaml-mode web-mode use-package rust-mode org-plus-contrib org-bullets neotree navigate markdown-mode magit-gh-pulls hlinum helm-projectile helm-ag flycheck evil-terminal-cursor-changer evil-surround evil-org evil-magit evil-leader evil-indent-textobject evil-commentary emojify editorconfig drag-stuff diff-hl beacon badger-theme auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
