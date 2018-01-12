@@ -63,6 +63,12 @@ Override some theme defaults
 #+BEGIN_SRC emacs-lisp
 (override-theme-defaults)
 #+END_SRC
+* Powerline
+#+BEGIN_SRC emacs-lisp
+(use-package powerline
+  :ensure t
+  :config (powerline-center-theme))
+#+END_SRC
 * Sane defaults
 ** Interface
 *** Turn off UI elements
@@ -480,6 +486,12 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
 #+BEGIN_SRC emacs-lisp
 (use-package rust-mode
   :ensure t)
+#+END_SRC
+** Ruby
+#+BEGIN_SRC emacs-lisp
+(use-package rvm
+  :ensure t
+  :config (rvm-use-default))
 #+END_SRC
 ** Markdown
 #+BEGIN_SRC emacs-lisp
