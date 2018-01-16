@@ -8,7 +8,7 @@
 
 This is my Emacs configuration file. It's built using org-mode. GitHub can render org files and I've included a symlink README.org -> config.org so GitHub renders my config directly on the repository page.
 
-This is a work-in-progress and I'm trying to adopt Emacs after a relatively long time using [[https://github.com/neovim/neovim][Neovim]]. Both are great projects and I'm having a difficult time abandoning either for the other, so you should check them out.
+This is a work-in-progress and I'm trying to adopt Emacs after a relatively long time using [[https://github.com/neovim/neovim][Neovim]]. Both are great projects and I'm having a difficult time abandoning either for the other, so you should check them out. I made [[https://brainlessdeveloper.com/2017/12/27/making-emacs-work-like-my-vim-setup/][a blog post about switching from Neovim to Emacs]]. Maybe you'll find it interesting, as it narrates the creation of this file.
 
 * Personal information
 #+BEGIN_SRC emacs-lisp
