@@ -435,7 +435,7 @@ If you use evil-mode, by default some of evil key bindings conflict with neotree
   :ensure t
   :init
     (add-hook 'after-init-hook #'global-emojify-mode)
-    (emojify-set-emoji-styles '(unicode)))
+    (setq emojify-display-style 'unicode))
 #+END_SRC
 * Magit
 #+BEGIN_SRC emacs-lisp
