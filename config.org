@@ -437,6 +437,13 @@ If you use evil-mode, by default some of evil key bindings conflict with neotree
     (add-hook 'after-init-hook #'global-emojify-mode)
     (setq emojify-display-style 'unicode))
 #+END_SRC
+* Rainbow delimiters
+#+BEGIN_SRC emacs-lisp
+(use-package rainbow-delimiters
+  :init
+    (add-hook 'web-mode-hook #'rainbow-delimiters-mode)
+    (add-hook 'rust-mode-hook #'rainbow-delimiters-mode))
+#+END_SRC
 * Magit
 #+BEGIN_SRC emacs-lisp
 (use-package magit :ensure t)
