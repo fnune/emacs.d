@@ -118,6 +118,11 @@ I find it annoying because it makes it hard to find the cursor after it appears.
 
 (setq command-error-function #'my-command-error-function)
 #+END_SRC
+*** Enable usage of xclip
+#+BEGIN_SRC emacs-lisp
+(use-package xclip
+  :config (xclip-mode 1))
+#+END_SRC
 ** Initialization
 *** Emacs system customizations go on a separate file
 #+BEGIN_SRC emacs-lisp
