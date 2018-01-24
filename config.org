@@ -499,12 +499,6 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
 (use-package rust-mode
   :ensure t)
 #+END_SRC
-** Ruby
-#+BEGIN_SRC emacs-lisp
-(use-package rvm
-  :ensure t
-  :config (rvm-use-default))
-#+END_SRC
 ** Markdown
 #+BEGIN_SRC emacs-lisp
 (use-package markdown-mode

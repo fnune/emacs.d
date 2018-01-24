@@ -9,3 +9,4 @@ config.el
 elpa
 emojis
 network-security.data
+var
