@@ -537,6 +537,11 @@ We set a zero delay to show the error message on the status bar below, and set a
 #+BEGIN_SRC emacs-lisp
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 #+END_SRC
+Make sure =eslint= does not try to =--print-config= after each buffer opens. Here's a [[https://github.com/flycheck/flycheck/issues/1129][related Flycheck issue]].
+#+BEGIN_SRC emacs-lisp
+(with-eval-after-load 'flycheck
+  (advice-add 'flycheck-eslint-config-exists-p :override (lambda() t)))
+#+END_SRC
 ** Make sure the =eslint= instance is the one local to the project
 #+BEGIN_SRC emacs-lisp
 (defun my/use-eslint-from-node-modules ()
