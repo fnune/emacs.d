@@ -484,7 +484,6 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
     (setq web-mode-content-types-alist '(("jsx" . "\\.tsx\\'")))
     (setq web-mode-content-types-alist '(("jsx" . "\\.js\\'")))
   :config
-    (add-to-list 'auto-mode-alist '("\\.[s]?css?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.erb?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
@@ -493,6 +492,11 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
 *** Yaml-mode
 #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode :ensure t)
+#+END_SRC
+*** SCSS-mode
+#+BEGIN_SRC emacs-lisp
+(use-package scss-mode
+  :mode (("\.scss\'" . scss-mode)))
 #+END_SRC
 ** Rust
 #+BEGIN_SRC emacs-lisp

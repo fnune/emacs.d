@@ -5,7 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (flycheck editorconfig markdown-mode rust-mode yaml-mode web-mode diff-hl magit-gh-pulls evil-magit magit rainbow-delimiters emojify auto-complete neotree helm-ag helm-projectile projectile helm org-bullets org-plus-contrib navigate evil-terminal-cursor-changer evil-commentary evil-indent-textobject evil-org evil-surround evil-leader evil drag-stuff xclip hlinum powerline badger-theme use-package))))
+    (scss-mode yaml-mode xclip web-mode use-package rust-mode rainbow-delimiters powerline org-plus-contrib org-bullets neotree navigate markdown-mode magit-gh-pulls hlinum helm-projectile helm-ag flycheck evil-terminal-cursor-changer evil-surround evil-org evil-magit evil-leader evil-indent-textobject evil-commentary emojify editorconfig drag-stuff diff-hl badger-theme auto-complete))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
