@@ -434,10 +434,13 @@ If you use evil-mode, by default some of evil key bindings conflict with neotree
 #+END_SRC
 * Auto-complete
 #+BEGIN_SRC emacs-lisp
-(use-package auto-complete
+(use-package company
   :ensure t
-  :init
-  (ac-config-default))
+  :config
+  (global-company-mode t))
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(define-key company-mode-map (kbd "TAB") 'company-complete)
 #+END_SRC
 * Emojify
 #+BEGIN_SRC emacs-lisp
@@ -502,6 +505,31 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
 #+BEGIN_SRC emacs-lisp
 (use-package scss-mode
   :mode (("\.scss\'" . scss-mode)))
+#+END_SRC
+*** TypeScript
+#+BEGIN_SRC emacs-lisp
+(use-package tide
+  :ensure t)
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+  (defun setup-tide-mode ()
+    (interactive)
+    (tide-setup)
+    (flycheck-mode +1)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (eldoc-mode +1)
+    (tide-hl-identifier-mode +1)
+    ;; company is an optional dependency. You have to
+    ;; install it separately via package-install
+    ;; `M-x package-install [ret] company`
+    (company-mode +1))
+
+  ;; aligns annotation to the right hand side
+  (setq company-tooltip-align-annotations t)
+
+  (setq tide-tsserver-executable "node_modules/.bin/tsserver")
+
+  (add-hook 'web-mode-hook #'setup-tide-mode)
 #+END_SRC
 ** Rust
 #+BEGIN_SRC emacs-lisp
