@@ -281,6 +281,11 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iqE 
 (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
 (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 #+END_SRC
+** Swap 0 and ^, i.e. make 0 move the cursor back to the first non-whitespace character
+#+BEGIN_SRC emacs-lisp
+(define-key evil-motion-state-map (kbd "0") 'evil-first-non-blank)
+(define-key evil-motion-state-map (kbd "^") 'evil-beginning-of-line)
+#+END_SRC
 ** Evil Leader keybindings
 #+BEGIN_SRC emacs-lisp
   (evil-leader/set-leader "<SPC>")
