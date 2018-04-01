@@ -436,10 +436,11 @@ If you use evil-mode, by default some of evil key bindings conflict with neotree
 #+END_SRC
 * Auto-complete
 #+BEGIN_SRC emacs-lisp
-(use-package company
-  :ensure t
-  :config
-  (global-company-mode t))
+  (use-package company
+    :ensure t
+    :config
+    (global-company-mode t)
+    (setq company-global-modes '(not org-mode)))
 #+END_SRC
 #+BEGIN_SRC emacs-lisp
 (define-key company-mode-map (kbd "TAB") 'company-complete)
