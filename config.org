@@ -256,7 +256,6 @@ In Delete Selection mode, if the mark is active, just deactivate it then it take
 (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
 (abort-recursive-edit)))
 
-(define-key evil-normal-state-map [escape] 'keyboard-escape-quit)
 (define-key evil-visual-state-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
