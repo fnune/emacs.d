@@ -415,8 +415,7 @@ Documentation on available colors can be found [[http://raebear.net/comp/emacsco
   (use-package projectile
     :ensure projectile
     :config
-    (projectile-global-mode t)
-    (setq projectile-enable-caching t))
+    (projectile-global-mode t))
   (use-package helm-projectile
     :ensure t)
   (use-package helm-ag
