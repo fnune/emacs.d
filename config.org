@@ -498,11 +498,17 @@ Initialize web-mode and recognize extensions. Also consider the possibility of J
     (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.ts[x]?\\'" . web-mode)))
 #+END_SRC
+Add ~node_modules~ path
+#+BEGIN_SRC emacs-lisp
+(use-package add-node-modules-path
+  :ensure t)
+#+END_SRC
 Run ~prettier~ on save if web-mode
 #+BEGIN_SRC emacs-lisp
-  (use-package prettier-js
-    :ensure t)
-  (add-hook 'web-mode-hook 'prettier-js-mode)
+(eval-after-load 'web-mode
+    '(progn
+       (add-hook 'web-mode-hook #'add-node-modules-path)
+       (add-hook 'web-mode-hook #'prettier-js-mode)))
 #+END_SRC
 *** Yaml-mode
 #+BEGIN_SRC emacs-lisp
