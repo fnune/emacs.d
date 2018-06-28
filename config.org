@@ -557,6 +557,11 @@ Run ~prettier~ on save if web-mode
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.tex.tera\\'" . latex-mode))
 #+END_SRC
+** Ruby
+Disable adding magit comments in ~ruby-mode~.
+#+BEGIN_SRC emacs-lisp
+(setq ruby-insert-encoding-magic-comment nil)
+#+END_SRC
 * Editorconfig
 #+BEGIN_SRC emacs-lisp
 (use-package editorconfig
