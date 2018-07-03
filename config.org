@@ -544,6 +544,11 @@ Run ~prettier~ on save if web-mode
 
   (add-hook 'web-mode-hook #'setup-tide-mode)
 #+END_SRC
+*** GraphQL
+#+BEGIN_SRC emacs-lisp
+(use-package graphql-mode
+  :ensure t)
+#+END_SRC
 ** Rust
 #+BEGIN_SRC emacs-lisp
 (use-package rust-mode
