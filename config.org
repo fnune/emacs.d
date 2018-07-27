@@ -446,7 +446,9 @@ If you use evil-mode, by default some of evil key bindings conflict with neotree
 #+END_SRC
 * Magit
 #+BEGIN_SRC emacs-lisp
-(use-package magit :ensure t)
+  (use-package magit
+  :ensure t
+  :config (setq magit-diff-refine-hunk 'all))
 #+END_SRC
 ** Evil-magit
 #+BEGIN_SRC emacs-lisp
