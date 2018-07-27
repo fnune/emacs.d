@@ -401,7 +401,7 @@ Documentation on available colors can be found [[http://raebear.net/comp/emacsco
   (use-package projectile
     :ensure projectile
     :config
-    (projectile-global-mode t))
+    (setq projectile-indexing-method 'git))
   (use-package helm-projectile
     :ensure t)
   (use-package helm-ag
@@ -499,6 +499,10 @@ Run ~prettier~ on save if web-mode
 *** Yaml-mode
 #+BEGIN_SRC emacs-lisp
 (use-package yaml-mode :ensure t)
+#+END_SRC
+*** Haml-mode
+#+BEGIN_SRC emacs-lisp
+(use-package haml-mode :ensure t)
 #+END_SRC
 *** SCSS-mode
 #+BEGIN_SRC emacs-lisp
