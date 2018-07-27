@@ -44,30 +44,19 @@ At the end of the config file we include some hooks to reload eyecandy that gets
 (setq use-package-always-ensure t)
 #+END_SRC
 * Theme
-Set some variables to override some defaults later on
 #+BEGIN_SRC emacs-lisp
-(setq visual-selected-background-color "#2c2c2c")
-(setq my-theme 'badger)
+(setq my-theme 'nord)
 #+END_SRC
-Add a function to override the defaults
 #+BEGIN_SRC emacs-lisp
-(defun override-theme-defaults () (set-face-attribute 'region nil :background visual-selected-background-color))
-#+END_SRC
-Initialize [[https://github.com/ccann/badger-theme][badger-theme]].
-#+BEGIN_SRC emacs-lisp
-(use-package badger-theme
-  :ensure t)
-(load-theme my-theme t)
-#+END_SRC
-Override some theme defaults
-#+BEGIN_SRC emacs-lisp
-(override-theme-defaults)
+    (use-package nord-theme
+      :ensure t)
+    (load-theme my-theme t)
 #+END_SRC
 * Powerline
 #+BEGIN_SRC emacs-lisp
 (use-package powerline
   :ensure t
-  :config (powerline-center-theme))
+  :config (powerline-center-evil-theme))
 #+END_SRC
 * Sane defaults
 ** Interface
@@ -84,9 +73,6 @@ Override some theme defaults
 *** Line numbers
 #+BEGIN_SRC emacs-lisp
 (global-linum-mode 1)
-(defun configure-linum-colors ()
-    (set-face-foreground 'linum "#555555"))
-(configure-linum-colors)
 (setq linum-format " %4d ")
 #+END_SRC
 
@@ -626,9 +612,7 @@ Make sure =eslint= does not try to =--print-config= after each buffer opens. Her
 Make a list of things we want to reevaluate when connecting to the server
 #+BEGIN_SRC emacs-lisp
 (defun reevaluate-eyecandy ()
-    (load-theme my-theme t)
-    (override-theme-defaults)
-    (configure-linum-colors))
+    (load-theme my-theme t))
 #+END_SRC
 Reload the theme and eyecandy settings when a new frame opens if running a server
 #+BEGIN_SRC emacs-lisp

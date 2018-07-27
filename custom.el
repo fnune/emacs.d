@@ -3,9 +3,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
+ '(custom-safe-themes
    (quote
-    (graphql-mode yaml-mode xclip web-mode use-package tide scss-mode rust-mode rainbow-delimiters prettier-js powerline org-plus-contrib org-bullets nordless-theme nord-theme neotree navigate markdown-mode magit-gh-pulls hlinum helm-projectile helm-ag github-theme github-modern-theme flycheck-rust flatui-theme evil-terminal-cursor-changer evil-surround evil-org evil-magit evil-leader evil-indent-textobject evil-commentary emojify emmet-mode editorconfig edit-indirect drag-stuff doom-themes doom diff-hl darktooth-theme company color-theme-solarized base16-theme badger-theme auto-complete ample-theme add-node-modules-path))))
+    ("527df6ab42b54d2e5f4eec8b091bd79b2fa9a1da38f5addd297d1c91aa19b616" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "7527f3308a83721f9b6d50a36698baaedc79ded9f6d5bd4e9a28a22ab13b3cb1" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
